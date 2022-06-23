@@ -10,7 +10,6 @@ import (
 var example string
 
 const LEN = 5
-const REPLACE_STRING = "A"
 
 func main() {
 	cin := bufio.NewScanner(os.Stdin)
@@ -26,7 +25,8 @@ func Solve() (answer int) {
 		answer++
 		pos -= LEN - 1
 		substr := example[pos : pos+LEN]
-		example = strings.Replace(example, substr, REPLACE_STRING, LEN)
+		replaceString := string(rune('A' + pos))
+		example = strings.Replace(example, substr, replaceString, -1)
 		pos = strings.Index(example, ")")
 	}
 	return
